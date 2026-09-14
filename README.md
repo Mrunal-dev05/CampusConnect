@@ -222,9 +222,7 @@ This approach demonstrates practical algorithmic thinking without making unsuppo
                          Concept & Logic
 ```
 
-The hosted dashboard is implemented as a browser-based interface, while the Java source demonstrates the academic/core implementation of the matching system.
-
-> **Note:** Hatchable hosts the browser demo; it does not execute Java source code on the server.
+The browser dashboard provides the interactive product experience, while the Java source demonstrates the academic/core implementation of the matching system.
 
 ---
 
@@ -288,7 +286,7 @@ The package structure mirrors the Java `package` declarations, making the source
 
 ## 🛠️ Built With
 
-**Java 17+ · HTML5 · CSS3 · JavaScript (ES6+) · LocalDate · Java Collections · Hatchable**
+**Java 17+ · HTML5 · CSS3 · JavaScript (ES6+) · LocalDate · Java Collections**
 
 ### Technology Roles
 
@@ -298,7 +296,6 @@ The package structure mirrors the Java `package` declarations, making the source
 | **HTML5** | Dashboard structure and forms |
 | **CSS3** | Responsive UI, layout and visual design |
 | **JavaScript** | Browser-side interactions, matching demo and analytics |
-| **Hatchable** | Hosting the browser-based project demo |
 
 ---
 
@@ -413,6 +410,13 @@ These are intentionally listed as future improvements and are **not represented 
 
 ---
 
+## 💼 Resume Description
+
+**CampusConnect — Smart Lost & Found Matcher | Java, OOP, Collections, HTML/CSS/JavaScript**
+
+> Developed a campus lost-and-found platform that ranks potential lost/found matches using an explainable 100-point weighted scoring algorithm based on category, location, date proximity, item-name similarity and description keywords. Implemented Java OOP using abstraction, inheritance, encapsulation, collections, `LocalDate`, sorting and validation, alongside a responsive dashboard with search, filtering, status workflows and analytics.
+
+### Short Resume Version
 
 > Built a Java-based Smart Lost & Found Matcher using OOP and a weighted 100-point matching algorithm, with a responsive web dashboard for reporting, search, match ranking, status tracking and analytics.
 
