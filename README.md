@@ -410,13 +410,6 @@ These are intentionally listed as future improvements and are **not represented 
 
 ---
 
-## 💼 Resume Description
-
-**CampusConnect — Smart Lost & Found Matcher | Java, OOP, Collections, HTML/CSS/JavaScript**
-
-> Developed a campus lost-and-found platform that ranks potential lost/found matches using an explainable 100-point weighted scoring algorithm based on category, location, date proximity, item-name similarity and description keywords. Implemented Java OOP using abstraction, inheritance, encapsulation, collections, `LocalDate`, sorting and validation, alongside a responsive dashboard with search, filtering, status workflows and analytics.
-
-### Short Resume Version
 
 > Built a Java-based Smart Lost & Found Matcher using OOP and a weighted 100-point matching algorithm, with a responsive web dashboard for reporting, search, match ranking, status tracking and analytics.
 
