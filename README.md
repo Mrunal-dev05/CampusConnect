@@ -1,115 +1,439 @@
-# CampusConnect – Smart Lost & Found Matcher
+# 🎓 CampusConnect — Smart Lost & Found Matcher
 
-A resume-ready Java college project that helps students report lost and found items and ranks potential matches using a transparent, explainable scoring algorithm.
+> A smart campus lost-and-found platform that helps students report missing or recovered items and identify potential matches through an explainable weighted matching algorithm.
 
-## Overview
-CampusConnect combines Java OOP, collections, date handling, validation, and ranking with a responsive browser dashboard. Users can submit campus lost/found reports, browse and filter records, review potential matches, and explore basic recovery analytics.
+**CampusConnect** is a Java-focused college mini-project designed around a practical campus problem: lost items are often reported through disconnected channels, making it difficult to connect a lost report with a corresponding found item.
 
-> **Important:** A match is presented as a **potential match**, not a definitive ownership claim.
+The platform brings reporting, discovery, potential-match ranking, status tracking, and recovery analytics into one clean dashboard while preserving a separate **Java OOP implementation** of the core matching system.
 
-## Key Features
-- Lost and found item reporting with validation
-- Search, filter and sort reports by type, category, location, date and status
-- Explainable potential-match ranking with confidence levels
-- Match review workflow: Relevant, Not a Match, Resolved
-- Item status lifecycle: Open, Potential Match, Claimed, Returned, Closed
-- Dashboard statistics and recent campus activity
-- Analytics for lost vs. found, categories, locations, returned items and match success
-- Responsive professional dashboard UI
-- Java source organized into separate OOP classes
+---
 
-## Matching Algorithm
-Each lost report is compared against found reports using weighted factors:
+## 🚀 Live Demo
 
-| Factor | Weight |
+🌐 **[Open CampusConnect](https://campusconnect-smart.hatchable.site)**
+
+💻 **[View Source Code](https://github.com/Mrunal-dev05/CampusConnect)**
+
+---
+
+## 🎯 The Problem
+
+Campus lost-and-found workflows are often fragmented across:
+
+- WhatsApp groups and student communities
+- Notice boards
+- Informal messages
+- Separate lost and found lists
+- Manual searching through reports
+
+This makes it difficult to quickly determine whether a recently found item could belong to someone who reported it missing.
+
+### 💡 The Idea
+
+CampusConnect provides a centralized workflow where students can:
+
+**Report → Discover → Compare → Review → Resolve**
+
+Instead of claiming that two reports definitely belong together, the system calculates a **potential match score** and clearly explains the factors contributing to that score.
+
+---
+
+## ✨ Key Features
+
+### 📌 Lost & Found Reporting
+
+- Report lost items with structured information
+- Report found items with matching fields
+- Item category and location tracking
+- Date-based reporting
+- Detailed item descriptions
+- Contact/preferred-contact information
+- Form validation for required fields
+
+### 🔎 Smart Potential Matching
+
+The system compares lost and found reports using a transparent weighted scoring model:
+
+| Matching Factor | Weight |
 |---|---:|
 | Same category | +30 |
 | Same location | +25 |
 | Date proximity | +20 |
 | Item-name similarity | +15 |
 | Description keyword overlap | +10 |
-| **Maximum score** | **100** |
+| **Maximum Score** | **100** |
 
-### Confidence Levels
-- **High:** 80–100
-- **Medium:** 60–79
-- **Low:** below 60
+### 📊 Match Confidence
 
-The algorithm is deterministic and explainable, making it suitable for demonstrating core Java problem-solving rather than claiming artificial intelligence.
+| Score | Confidence |
+|---:|---|
+| **80–100** | 🔴 High |
+| **60–79** | 🟠 Medium |
+| **Below 60** | ⚪ Low |
 
-## Java Concepts Demonstrated
-- **Abstraction:** `Item` as an abstract base class
-- **Inheritance:** `LostItem` and `FoundItem` extend `Item`
-- **Encapsulation:** private fields with controlled access through getters
-- **Collections:** `ArrayList` and `List`
-- **Date/Time API:** `LocalDate` and `ChronoUnit`
-- **Sorting:** `Comparator`
-- **Exception handling:** input validation and error handling
-- **Modular design:** model, service and application layers
+The platform deliberately uses the term **Potential Match** rather than claiming definitive ownership.
 
-## Project Structure
+### 🗂️ Browse & Search
+
+Users can explore reports using:
+
+- Lost / Found type
+- Category
+- Location
+- Date
+- Status
+- Keyword search
+- Most recent sorting
+- Highest match-score sorting
+
+### 🔄 Item Status Workflow
+
 ```text
-public/
-├── index.html
-├── styles.css
-├── app.js
-└── java-src/
-    └── campusconnect/
-        ├── Main.java
-        ├── model/
-        │   ├── Item.java
-        │   ├── LostItem.java
-        │   ├── FoundItem.java
-        │   └── MatchResult.java
-        └── service/
-            └── MatchingService.java
+Open
+  ↓
+Potential Match
+  ↓
+Claimed / Reviewed
+  ↓
+Returned
+  ↓
+Closed
 ```
 
-## Architecture
-```text
-User Interface
-     │
-     ▼
-Browser Dashboard (HTML / CSS / JavaScript)
-     │
-     ├── Reporting & Validation
-     ├── Search / Filter / Sort
-     ├── Match Ranking
-     └── Analytics
+### 📈 Analytics Dashboard
 
-Academic Java Implementation
-     │
-     ├── campusconnect.Main
-     ├── campusconnect.model
-     └── campusconnect.service.MatchingService
+The dashboard provides an overview of campus lost-and-found activity, including:
+
+- Total lost items
+- Total found items
+- Potential matches
+- Successfully returned items
+- Lost vs. found distribution
+- Most common categories
+- Most common locations
+- Match success rate
+
+### 🎛️ Match Review
+
+Potential matches can be reviewed through actions such as:
+
+- Relevant
+- Not a Match
+- Resolved
+
+This keeps the matching process transparent and human-reviewed instead of presenting automated scoring as a final decision.
+
+---
+
+## 🔄 Core Platform Workflow
+
+```text
+       Student Report
+             │
+       ┌─────┴─────┐
+       │           │
+    Lost Item   Found Item
+       │           │
+       └─────┬─────┘
+             ↓
+      Matching Engine
+             │
+             ↓
+    Potential Match Score
+             │
+      ┌──────┴──────┐
+      │             │
+   High/Medium     Low
+      │             │
+      ↓             ↓
+  Review Match   Continue Search
+      │
+      ↓
+   Resolution
+      │
+      ↓
+    Returned
 ```
 
-The hosted Hatchable demo is a client-side browser implementation of the same product and matching concept. The Java source is preserved separately as the academic implementation; Hatchable does not execute Java source code.
+---
 
-## Run the Java Version Locally
-Requires **JDK 17+**.
+## 🧠 Matching Algorithm
 
-From the `public/java-src` directory:
+The matching engine is intentionally **deterministic and explainable**.
+
+For every Lost Item and Found Item pair:
+
+1. Compare categories.
+2. Compare reported locations.
+3. Calculate the difference between report dates.
+4. Compare item names.
+5. Find meaningful overlapping description keywords.
+6. Add the corresponding weighted points.
+7. Cap the final score at **100**.
+8. Convert the score into a confidence level.
+
+### Example
+
+```text
+Lost Item
+  Laptop Charger
+  Category: Electronics
+  Location: Lab 204
+  Date: 2026-09-13
+
+          VS
+
+Found Item
+  Dell Laptop Charger
+  Category: Electronics
+  Location: Lab 204
+  Date: 2026-09-13
+
+Category Match       +30
+Location Match       +25
+Same Date            +20
+Name Similarity      +15
+Description Overlap  +10
+                     ───
+Total                 100/100
+Confidence            High
+```
+
+This approach demonstrates practical algorithmic thinking without making unsupported AI/ML claims.
+
+---
+
+## 🏗️ Architecture
+
+```text
+                         CampusConnect
+                              │
+             ┌────────────────┴────────────────┐
+             │                                 │
+       Browser Dashboard                 Java Core Implementation
+             │                                 │
+     ┌───────┼────────┐                ┌───────┼────────┐
+     │       │        │                │       │        │
+  Reports  Matching Analytics        Model  Service   Main
+     │       │        │                │       │        │
+     └───────┴────────┘                └───────┴────────┘
+             │                                 │
+             └──────────── Same Product ───────┘
+                         Concept & Logic
+```
+
+The hosted dashboard is implemented as a browser-based interface, while the Java source demonstrates the academic/core implementation of the matching system.
+
+> **Note:** Hatchable hosts the browser demo; it does not execute Java source code on the server.
+
+---
+
+## ☕ Java Implementation
+
+The project keeps the Java implementation modular and follows standard object-oriented design.
+
+### Core Classes
+
+| Class | Responsibility |
+|---|---|
+| `Item` | Abstract base class for common item properties |
+| `LostItem` | Represents a lost report |
+| `FoundItem` | Represents a found report |
+| `MatchResult` | Stores a lost/found pair and calculated score |
+| `MatchingService` | Contains the weighted matching logic |
+| `Main` | Console entry point and application workflow |
+
+### Java Concepts Demonstrated
+
+- **Abstraction** — `Item` is an abstract base class
+- **Inheritance** — `LostItem` and `FoundItem` extend `Item`
+- **Encapsulation** — private fields with public accessors
+- **Collections** — `ArrayList` and `List`
+- **Date & Time API** — `LocalDate` and `ChronoUnit`
+- **Sorting** — `Comparator`
+- **Exception Handling** — input validation and invalid input handling
+- **Modular Design** — model, service and application layers
+
+---
+
+## 📁 Project Structure
+
+```text
+CampusConnect/
+│
+├── public/
+│   ├── index.html
+│   ├── styles.css
+│   ├── app.js
+│   │
+│   └── java-src/
+│       └── campusconnect/
+│           ├── Main.java
+│           │
+│           ├── model/
+│           │   ├── Item.java
+│           │   ├── LostItem.java
+│           │   ├── FoundItem.java
+│           │   └── MatchResult.java
+│           │
+│           └── service/
+│               └── MatchingService.java
+│
+└── README.md
+```
+
+The package structure mirrors the Java `package` declarations, making the source easier to understand, maintain and compile locally.
+
+---
+
+## 🛠️ Built With
+
+**Java 17+ · HTML5 · CSS3 · JavaScript (ES6+) · LocalDate · Java Collections · Hatchable**
+
+### Technology Roles
+
+| Technology | Purpose |
+|---|---|
+| **Java 17+** | Core academic implementation and OOP design |
+| **HTML5** | Dashboard structure and forms |
+| **CSS3** | Responsive UI, layout and visual design |
+| **JavaScript** | Browser-side interactions, matching demo and analytics |
+| **Hatchable** | Hosting the browser-based project demo |
+
+---
+
+## ⚙️ Run the Java Version Locally
+
+### Prerequisites
+
+- **JDK 17 or later**
+- Git
+
+### Clone the Repository
 
 ```bash
+git clone https://github.com/Mrunal-dev05/CampusConnect.git
+cd CampusConnect
+```
+
+### Compile
+
+```bash
+cd public/java-src
 javac campusconnect/model/*.java campusconnect/service/*.java campusconnect/Main.java
+```
+
+### Run
+
+```bash
 java campusconnect.Main
 ```
 
-## Hosted Demo
-**CampusConnect:** https://campusconnect-smart.hatchable.site
+The Java console application allows you to create lost/found reports, view reports and calculate potential matches.
 
-## Tech Stack
-- Java 17+
-- HTML5
-- CSS3
-- JavaScript (ES6+)
-- LocalDate / Java Collections
-- Hatchable for hosted browser demo
+---
 
-## Resume Description
-**CampusConnect – Smart Lost & Found Matcher | Java, OOP, Collections, HTML/CSS/JavaScript**  
-Built a campus lost-and-found system with an explainable weighted matching algorithm that ranks potential matches using category, location, date proximity, item-name similarity and description keywords. Implemented Java OOP with inheritance, encapsulation, collections, date handling, sorting and validation, and developed a responsive dashboard with search, filtering, status workflows and analytics.
+## 🌐 Browser Demo
 
-## Author
-Mrunal-dev05
+The hosted version provides a polished dashboard experience with:
+
+- Dashboard overview
+- Lost item reporting
+- Found item reporting
+- Search and filtering
+- Potential match ranking
+- Match review
+- Item details
+- Status management
+- Analytics
+- Responsive layout
+
+👉 **[Launch CampusConnect](https://campusconnect-smart.hatchable.site)**
+
+---
+
+## 📊 Product Highlights
+
+```text
+             CampusConnect
+                  │
+       ┌──────────┼──────────┐
+       │          │          │
+    Report      Match      Analyze
+       │          │          │
+       ↓          ↓          ↓
+    Lost/Found  Score     Insights
+       │          │          │
+       └──────────┼──────────┘
+                  ↓
+              Resolution
+                  ↓
+               Returned
+```
+
+The product focuses on one clear goal: **reduce the friction between reporting a lost item and discovering a relevant found report.**
+
+---
+
+## 🎓 Academic Value
+
+CampusConnect was designed to demonstrate how core Java concepts can be applied to a practical software problem rather than building a purely theoretical console program.
+
+The project combines:
+
+- Object-oriented programming
+- Algorithmic scoring
+- Data structures
+- Date-based comparison
+- Input validation
+- Ranking and sorting
+- Modular architecture
+- Responsive web UI
+- Data-driven analytics
+
+This makes it suitable as a **college mini-project, Java OOP project, portfolio project, and resume project**.
+
+---
+
+## 🔮 Future Improvements
+
+Potential future iterations could include:
+
+- 🗄️ Persistent database storage
+- 🔐 Student authentication and authorization
+- 📱 Mobile-first PWA support
+- 📸 Image-based item comparison
+- 🔔 Email or in-app notifications
+- 🏫 College-specific campus locations
+- 🤖 ML-assisted similarity recommendations
+- 📊 More advanced recovery analytics
+- ☁️ Production backend and scalable API
+
+These are intentionally listed as future improvements and are **not represented as current functionality**.
+
+---
+
+## 💼 Resume Description
+
+**CampusConnect — Smart Lost & Found Matcher | Java, OOP, Collections, HTML/CSS/JavaScript**
+
+> Developed a campus lost-and-found platform that ranks potential lost/found matches using an explainable 100-point weighted scoring algorithm based on category, location, date proximity, item-name similarity and description keywords. Implemented Java OOP using abstraction, inheritance, encapsulation, collections, `LocalDate`, sorting and validation, alongside a responsive dashboard with search, filtering, status workflows and analytics.
+
+### Short Resume Version
+
+> Built a Java-based Smart Lost & Found Matcher using OOP and a weighted 100-point matching algorithm, with a responsive web dashboard for reporting, search, match ranking, status tracking and analytics.
+
+---
+
+## 👨‍💻 Developer
+
+**Mrunal Pimpale**  
+Computer Engineering Student | Software Development & Algorithms
+
+🔗 **GitHub:** [Mrunal-dev05](https://github.com/Mrunal-dev05)
+
+---
+
+## 📄 License
+
+This project is developed for **academic learning, portfolio development and demonstration purposes**.
